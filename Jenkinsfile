@@ -22,7 +22,10 @@ pipeline {
         }
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply --auto-approve'
+                sh 'terraform apply --auto-approve' \
+                     -var "filename=example.txt" \
+                     -var "content=Hello from Jenkins Pipeline"
+
             }
         }
     }
