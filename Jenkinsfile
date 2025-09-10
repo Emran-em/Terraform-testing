@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        AWS_ACCESS_KEY_ID     = credentials('terraform-access')   // Correct Jenkins credential ID
-        AWS_SECRET_ACCESS_KEY = credentials('terraform-secret')   // Correct Jenkins credential ID
+        AWS_ACCESS_KEY_ID     = credentials('Access_key')   // Correct Jenkins credential ID
+        AWS_SECRET_ACCESS_KEY = credentials('secret_key')   // Correct Jenkins credential ID
     }
 
     stages {
