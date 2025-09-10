@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        AWS_ACCESS_KEY_ID     = credentials('Access_key')
-        AWS_SECRET_ACCESS_KEY = credentials('secret_key')
+        AWS_ACCESS_KEY_ID     = credentials('terraform-access')   // Correct Jenkins credential ID
+        AWS_SECRET_ACCESS_KEY = credentials('terraform-secret')   // Correct Jenkins credential ID
     }
 
     stages {
@@ -31,12 +31,21 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-                sh """
+                sh '''
                     terraform apply -auto-approve \
                       -var "filename=example.txt" \
                       -var "content=Hello from Jenkins Pipeline"
-                """
+                '''
             }
+        }
+    }
+
+    post {
+        success {
+            echo "Terraform executed successfully ✅"
+        }
+        failure {
+            echo "Terraform pipeline failed ❌ - check logs"
         }
     }
 }
