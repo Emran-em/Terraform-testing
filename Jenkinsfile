@@ -23,8 +23,8 @@ pipeline {
             steps {
                 sh '''
                     terraform plan \
-                      -var "filename=example.txt" \
-                      -var "content=Hello from Jenkins Pipeline"
+                      -var "filename=terraform-3.txt" \
+                      -var "content=completed terraform task 3"
                 '''
             }
         }
@@ -33,8 +33,8 @@ pipeline {
             steps {
                 sh '''
                     terraform apply -auto-approve \
-                      -var "filename=example.txt" \
-                      -var "content=Hello from Jenkins Pipeline"
+                      -var "filename=terraform-3.txt" \
+                      -var "content=completed terraform task 3"
                 '''
             }
         }
